@@ -8,7 +8,7 @@ public class User {
 
     private String lastName;
 
-    private User() {
+    public User() {
 
     }
 
