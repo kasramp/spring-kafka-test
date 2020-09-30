@@ -6,6 +6,7 @@ import com.madadipouya.springkafkatest.dto.User;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -27,8 +28,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.timeout;
 import static org.mockito.Mockito.verify;
 
-@SpringBootTest
-@EmbeddedKafka(ports = 9092)
+@EmbeddedKafka
+@SpringBootTest(properties = "spring.kafka.bootstrap-servers=${spring.embedded.kafka.brokers}")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class UserKafkaConsumerTest {
 
@@ -84,5 +85,10 @@ class UserKafkaConsumerTest {
         assertEquals(TOPIC_NAME, topicArgumentCaptor.getValue());
         assertEquals(0, partitionArgumentCaptor.getValue());
         assertEquals(0, offsetArgumentCaptor.getValue());
+    }
+
+    @AfterAll
+    void shutdown() {
+        producer.close();
     }
 }

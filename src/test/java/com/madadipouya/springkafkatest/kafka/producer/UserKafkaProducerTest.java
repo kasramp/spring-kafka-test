@@ -28,8 +28,8 @@ import java.util.concurrent.TimeUnit;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-@SpringBootTest
-@EmbeddedKafka(ports = 9092)
+@EmbeddedKafka
+@SpringBootTest(properties = "spring.kafka.bootstrap-servers=${spring.embedded.kafka.brokers}")
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class UserKafkaProducerTest {
 
