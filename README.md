@@ -1,6 +1,6 @@
 # Spring Kafka test example
 
-Spring Kafka with unit test example.
+Spring Kafka example with junit test using EmbeddedKafka.
 
 ## How to run
 
