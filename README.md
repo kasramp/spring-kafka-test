@@ -2,6 +2,10 @@
 
 Spring Kafka example with junit test using EmbeddedKafka.
 
+For the tutorial check the link below,
+
+- [Test Spring Kafka consumer and producer with EmbeddedKafka](https://www.geekyhacker.com/2020/10/03/test-spring-kafka-consumer-and-producer-with-embeddedkafka/)
+
 ## How to run
 
 First start the docker-compose which contains ZooKeeper, Kafka, and Kafdrop.
