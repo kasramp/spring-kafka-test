@@ -1,6 +1,6 @@
 # Spring Kafka test example
 
-Spring Kafka example with junit test using EmbeddedKafka.
+Spring Kafka example with JUnit 5 using EmbeddedKafka and `spring-kafka-test`.
 
 For the tutorial check the link below,
 
