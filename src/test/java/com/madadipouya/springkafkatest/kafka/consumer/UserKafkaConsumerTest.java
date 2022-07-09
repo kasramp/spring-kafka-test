@@ -3,6 +3,7 @@ package com.madadipouya.springkafkatest.kafka.consumer;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.madadipouya.springkafkatest.dto.User;
+import com.madadipouya.springkafkatest.service.UserService;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
@@ -14,6 +15,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.test.EmbeddedKafkaBroker;
@@ -25,6 +27,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.timeout;
 import static org.mockito.Mockito.verify;
 
@@ -45,6 +48,9 @@ class UserKafkaConsumerTest {
 
     @SpyBean
     private UserKafkaConsumer userKafkaConsumer;
+
+    @MockBean
+    private UserService userService;
 
     @Captor
     ArgumentCaptor<User> userArgumentCaptor;
@@ -85,6 +91,7 @@ class UserKafkaConsumerTest {
         assertEquals(TOPIC_NAME, topicArgumentCaptor.getValue());
         assertEquals(0, partitionArgumentCaptor.getValue());
         assertEquals(0, offsetArgumentCaptor.getValue());
+        verify(userService).save(any(User.class));
     }
 
     @AfterAll
