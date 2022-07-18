@@ -1,10 +1,11 @@
 # Spring Kafka test example
 
-Spring Kafka example with JUnit 5 using EmbeddedKafka and `spring-kafka-test`.
+Spring Kafka example with JUnit 5 using EmbeddedKafka/`spring-kafka-test` and also using [Testcontainers](https://www.testcontainers.org/).
 
-For the tutorial check the link below,
+For the tutorials check the links below,
 
 - [Test Spring Kafka consumer and producer with EmbeddedKafka](https://www.geekyhacker.com/2020/10/03/test-spring-kafka-consumer-and-producer-with-embeddedkafka/)
+- [Write Kafka integration test with Testcontainers](https://www.geekyhacker.com/2022/07/13/write-kafka-integration-test-with-testcontainers/)
 
 ## How to run
 
