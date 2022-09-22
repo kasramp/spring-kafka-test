@@ -28,6 +28,6 @@ public class DefaultUserService implements UserService {
 
     @Override
     public List<com.madadipouya.springkafkatest.entity.User> getUsers(String firstName) {
-        return userRepository.getByFirstName(firstName);
+        return userRepository.getByFirstNameIgnoreCaseOrderByFirstNameAscLastNameAsc(firstName);
     }
 }

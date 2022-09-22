@@ -26,18 +26,18 @@ public class UserRepositoryTest {
 
     @Test
     void testGetByFirstName() {
-        testEntityManager.persist(stubUser("John", "Wick"));
+        testEntityManager.persist(stubUser("john", "Wick"));
         testEntityManager.persist(stubUser("Robert", "McCall"));
         testEntityManager.persist(stubUser("John", "Rambo"));
 
-        List<User> users = userRepository.getByFirstName("John");
+        List<User> users = userRepository.getByFirstNameIgnoreCaseOrderByFirstNameAscLastNameAsc("John");
 
         assertFalse(users.isEmpty());
         assertEquals(2, users.size());
         assertEquals("John", users.get(0).getFirstName());
-        assertEquals("Wick", users.get(0).getLastName());
-        assertEquals("John", users.get(1).getFirstName());
-        assertEquals("Rambo", users.get(1).getLastName());
+        assertEquals("Rambo", users.get(0).getLastName());
+        assertEquals("john", users.get(1).getFirstName());
+        assertEquals("Wick", users.get(1).getLastName());
     }
 
     private User stubUser(String firstName, String lastName) {
