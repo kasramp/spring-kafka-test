@@ -7,6 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DefaultUserService implements UserService {
 
@@ -22,5 +24,10 @@ public class DefaultUserService implements UserService {
     public void save(User user) {
         logger.info("Saving user with id = {}", user.getUuid());
         userRepository.save(new com.madadipouya.springkafkatest.entity.User(user.getUuid(), user.getFirstName(), user.getLastName()));
+    }
+
+    @Override
+    public List<com.madadipouya.springkafkatest.entity.User> getUsers(String firstName) {
+        return userRepository.getByFirstName(firstName);
     }
 }
