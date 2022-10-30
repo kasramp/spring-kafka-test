@@ -6,6 +6,7 @@ For the tutorials check the links below,
 
 - [Test Spring Kafka consumer and producer with EmbeddedKafka](https://www.geekyhacker.com/2020/10/03/test-spring-kafka-consumer-and-producer-with-embeddedkafka/)
 - [Write Kafka integration test with Testcontainers](https://www.geekyhacker.com/2022/07/13/write-kafka-integration-test-with-testcontainers/)
+- [Database migration with Spring Boot and Flyway](https://www.geekyhacker.com/2022/10/30/database-migration-with-spring-boot-and-flyway/)
 
 ## How to run
 
