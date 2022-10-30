@@ -21,6 +21,8 @@ import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.test.EmbeddedKafkaBroker;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.kafka.test.utils.KafkaTestUtils;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -63,6 +65,15 @@ class UserKafkaConsumerTest {
 
     @Captor
     ArgumentCaptor<Long> offsetArgumentCaptor;
+
+    @DynamicPropertySource
+    static void kafkaProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", () -> "jdbc:h2:mem:test");
+        registry.add("spring.datasource.driverClassName", () -> "org.h2.Driver");
+        registry.add("spring.datasource.username", () -> "root");
+        registry.add("spring.datasource.password", () -> "secret");
+        registry.add("spring.flyway.enabled", () -> "false");
+    }
 
     @BeforeAll
     void setUp() {
