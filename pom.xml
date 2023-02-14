@@ -5,8 +5,8 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.5.14</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>3.0.2</version>
+		<relativePath/>
 	</parent>
 	<groupId>com.madadipouya</groupId>
 	<artifactId>spring-kafka-test</artifactId>
@@ -15,8 +15,8 @@
 	<description>An example project demonstrates testing Spring Kafka</description>
 
 	<properties>
-		<java.version>11</java.version>
-		<flyway.version>7.7.3</flyway.version>
+		<java.version>17</java.version>
+		<flyway.version>9.14.1</flyway.version>
 		<flyway.url>jdbc:mysql://localhost:3306/test</flyway.url>
 		<flyway.user>root</flyway.user>
 		<flyway.password>secret</flyway.password>
@@ -32,9 +32,9 @@
 			<artifactId>spring-kafka</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<version>2.0.1.Final</version>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+			<version>3.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -51,9 +51,14 @@
 			<version>${flyway.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>io.springfox</groupId>
-			<artifactId>springfox-boot-starter</artifactId>
-			<version>3.0.0</version>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-mysql</artifactId>
+			<version>${flyway.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springdoc</groupId>
+			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+			<version>2.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.javafaker</groupId>
@@ -80,19 +85,19 @@
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>testcontainers</artifactId>
-			<version>1.17.3</version>
+			<version>1.17.6</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>junit-jupiter</artifactId>
-			<version>1.17.3</version>
+			<version>1.17.6</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.testcontainers</groupId>
 			<artifactId>kafka</artifactId>
-			<version>1.17.3</version>
+			<version>1.17.6</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
