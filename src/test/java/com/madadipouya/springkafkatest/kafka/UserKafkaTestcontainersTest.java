@@ -1,7 +1,6 @@
 package com.madadipouya.springkafkatest.kafka;
 
 import com.madadipouya.springkafkatest.dto.User;
-import com.madadipouya.springkafkatest.kafka.consumer.UserKafkaConsumer;
 import com.madadipouya.springkafkatest.kafka.producer.UserKafkaProducer;
 import com.madadipouya.springkafkatest.service.UserService;
 import org.junit.jupiter.api.Test;
@@ -41,9 +40,6 @@ class UserKafkaTestcontainersTest {
 
     @Autowired
     private UserKafkaProducer userKafkaProducer;
-
-    @Autowired
-    private UserKafkaConsumer userKafkaConsumer;
 
     @MockBean
     private UserService userService;
