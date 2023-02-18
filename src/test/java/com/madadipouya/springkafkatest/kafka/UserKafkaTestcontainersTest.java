@@ -30,7 +30,6 @@ class UserKafkaTestcontainersTest {
     @DynamicPropertySource
     static void kafkaProperties(DynamicPropertyRegistry registry) {
         registry.add("spring.kafka.bootstrap-servers", kafkaContainer::getBootstrapServers);
-        // TODO - replace this with test container
         registry.add("spring.datasource.url", () -> "jdbc:h2:mem:test");
         registry.add("spring.datasource.driverClassName", () -> "org.h2.Driver");
         registry.add("spring.datasource.username", () -> "root");
