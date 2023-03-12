@@ -1,0 +1,45 @@
+version: '3.7'
+services:
+  redpanda:
+    image: redpandadata/redpanda
+    container_name: redpanda
+    restart: unless-stopped
+    command:
+      - redpanda
+      - start
+      - --memory 1G
+      - --kafka-addr PLAINTEXT://0.0.0.0:29092,OUTSIDE://0.0.0.0:9092
+      - --advertise-kafka-addr PLAINTEXT://redpanda:29092,OUTSIDE://localhost:9092
+      - --pandaproxy-addr 0.0.0.0:8082
+      - --advertise-pandaproxy-addr localhost:8082
+    ports:
+      - 8081:8081
+      - 8082:8082
+      - 9092:9092
+      - 9644:9644
+      - 29092:29092
+    healthcheck:
+      test: "curl -f localhost:9644/v1/status/ready"
+      interval: 3s
+      start_period: 30s
+  kafdrop:
+    image: obsidiandynamics/kafdrop
+    container_name: kafdrop
+    restart: unless-stopped
+    depends_on:
+      - redpanda
+    ports:
+      - 8085:9000
+    environment:
+      KAFKA_BROKERCONNECT: redpanda:29092
+    healthcheck:
+      test: "curl -f kafdrop:9000/actuator/health || exit 1"
+      start_period: 30s
+
+  mysql:
+    image: mysql:8.0.30
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=test
