@@ -4,10 +4,10 @@ Spring Kafka example with JUnit 5 using EmbeddedKafka/`spring-kafka-test` and al
 
 For the tutorials check the links below,
 
-- [Test Spring Kafka consumer and producer with EmbeddedKafka](https://www.geekyhacker.com/2020/10/03/test-spring-kafka-consumer-and-producer-with-embeddedkafka/)
-- [Write Kafka integration test with Testcontainers](https://www.geekyhacker.com/2022/07/13/write-kafka-integration-test-with-testcontainers/)
-- [Database migration with Spring Boot and Flyway](https://www.geekyhacker.com/2022/10/30/database-migration-with-spring-boot-and-flyway/)
-- [Spring Boot MySQL integration tests with Testcontainers](https://www.geekyhacker.com/2023/02/20/spring-boot-mysql-integration-tests-with-testcontainers/)
+- [Test Spring Kafka consumer and producer with EmbeddedKafka](https://www.geekyhacker.com/test-spring-kafka-consumer-and-producer-with-embeddedkafka/)
+- [Write Kafka integration test with Testcontainers](https://www.geekyhacker.com/write-kafka-integration-test-with-testcontainers/)
+- [Database migration with Spring Boot and Flyway](https://www.geekyhacker.com/database-migration-with-spring-boot-and-flyway/)
+- [Spring Boot MySQL integration tests with Testcontainers](https://www.geekyhacker.com/spring-boot-mysql-integration-tests-with-testcontainers/)
 
 ## How to run
 
