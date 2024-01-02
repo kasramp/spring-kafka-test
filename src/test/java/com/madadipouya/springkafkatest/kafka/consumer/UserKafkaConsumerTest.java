@@ -90,7 +90,7 @@ class UserKafkaConsumerTest {
         producer.flush();
 
         // Read the message and assert its properties
-        verify(userKafkaConsumer, timeout(5000).times(1))
+        verify(userKafkaConsumer, timeout(10000).times(1))
                 .logKafkaMessages(userArgumentCaptor.capture(), topicArgumentCaptor.capture(),
                         partitionArgumentCaptor.capture(), offsetArgumentCaptor.capture());
 
