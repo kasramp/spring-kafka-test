@@ -7,6 +7,7 @@ import com.madadipouya.springkafkatest.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,12 +38,14 @@ public class UserController {
     @GetMapping("/random")
     @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Create a user", description = "Creates a random user and write it to Kafka which is consumed by the listener")
-    public void generateRandomUser() {
-        kafkaProducer.writeToKafka(new User(UUID.randomUUID().toString(), faker.name().firstName(), faker.name().lastName()));
+    public ResponseEntity<User> generateRandomUser() {
+        var user = new User(UUID.randomUUID().toString(), faker.name().firstName(), faker.name().lastName());
+        kafkaProducer.writeToKafka(user);
+        return ResponseEntity.ok(user);
     }
 
     @GetMapping("/{firstName}")
-    @ResponseStatus
+    @ResponseStatus(HttpStatus.OK)
     @Operation(summary = "Create a user", description = "Returns a list of users that matchers the given name")
     public List<User> getUsers(@PathVariable(name = "firstName") String name) {
         List<com.madadipouya.springkafkatest.entity.User> users = userService.getUsers(name);

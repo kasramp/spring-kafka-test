@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.0</version>
+		<version>3.2.4</version>
 		<relativePath/>
 	</parent>
 	<groupId>com.madadipouya</groupId>
@@ -15,9 +15,9 @@
 	<description>An example project demonstrates testing Spring Kafka</description>
 
 	<properties>
-		<java.version>17</java.version>
-		<flyway.version>9.18.0</flyway.version>
-		<testcontainers.version>1.18.3</testcontainers.version>
+		<java.version>21</java.version>
+		<flyway.version>10.11.0</flyway.version>
+		<testcontainers.version>1.19.7</testcontainers.version>
 		<flyway.url>jdbc:mysql://localhost:3306/test</flyway.url>
 		<flyway.user>root</flyway.user>
 		<flyway.password>secret</flyway.password>
@@ -43,7 +43,7 @@
 		<dependency>
 			<groupId>com.mysql</groupId>
 			<artifactId>mysql-connector-j</artifactId>
-			<version>8.0.33</version>
+			<version>8.3.0</version>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -59,7 +59,7 @@
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-			<version>2.1.0</version>
+			<version>2.5.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.github.javafaker</groupId>
