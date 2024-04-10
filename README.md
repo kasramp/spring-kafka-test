@@ -8,6 +8,7 @@ For the tutorials check the links below,
 - [Write Kafka integration test with Testcontainers](https://www.geekyhacker.com/write-kafka-integration-test-with-testcontainers/)
 - [Database migration with Spring Boot and Flyway](https://www.geekyhacker.com/database-migration-with-spring-boot-and-flyway/)
 - [Spring Boot MySQL integration tests with Testcontainers](https://www.geekyhacker.com/spring-boot-mysql-integration-tests-with-testcontainers/)
+- [Spring Boot Swagger documentation using OpenAPI](https://www.geekyhacker.com/spring-boot-swagger-documentation-using-openapi/)
 - [Disable Springdoc OpenAPI Swagger in production](https://www.geekyhacker.com/disable-springdoc-openapi-swagger-in-production/)
 
 ## How to run
