@@ -10,6 +10,7 @@ For the tutorials check the links below,
 - [Spring Boot MySQL integration tests with Testcontainers](https://www.geekyhacker.com/spring-boot-mysql-integration-tests-with-testcontainers/)
 - [Spring Boot Swagger documentation using OpenAPI](https://www.geekyhacker.com/spring-boot-swagger-documentation-using-openapi/)
 - [Disable Springdoc OpenAPI Swagger in production](https://www.geekyhacker.com/disable-springdoc-openapi-swagger-in-production/)
+- [How to hide an endpoint in Springdoc OpenAPI](https://www.geekyhacker.com/how-to-hide-an-endpoint-in-springdoc-openapi/)
 
 ## How to run
 
