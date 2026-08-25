@@ -1,7 +1,7 @@
 package com.madadipouya.springkafkatest.kafka.consumer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.json.JsonMapper;
 import com.madadipouya.springkafkatest.dto.User;
 import com.madadipouya.springkafkatest.service.UserService;
 import org.apache.kafka.clients.producer.Producer;
@@ -15,14 +15,14 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.mock.mockito.SpyBean;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.test.EmbeddedKafkaBroker;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.kafka.test.utils.KafkaTestUtils;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import org.springframework.test.context.bean.override.mockito.MockitoBean;
+import org.springframework.test.context.bean.override.mockito.MockitoSpyBean;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -45,12 +45,12 @@ class UserKafkaConsumerTest {
     private EmbeddedKafkaBroker embeddedKafkaBroker;
 
     @Autowired
-    private ObjectMapper objectMapper;
+    private JsonMapper objectMapper;
 
-    @SpyBean
+    @MockitoSpyBean
     private UserKafkaConsumer userKafkaConsumer;
 
-    @MockBean
+    @MockitoBean
     private UserService userService;
 
     @Captor
@@ -82,16 +82,19 @@ class UserKafkaConsumerTest {
 
     @Test
     void testLogKafkaMessages() throws JsonProcessingException {
-        // Write a message (John Wick user) to Kafka using a test producer
         String uuid = "11111";
         String message = objectMapper.writeValueAsString(new User(uuid, "John", "Wick"));
         producer.send(new ProducerRecord<>(TOPIC_NAME, 0, uuid, message));
         producer.flush();
 
-        // Read the message and assert its properties
+        ArgumentCaptor<User> userArgumentCaptor = ArgumentCaptor.forClass(User.class);
+        ArgumentCaptor<String> topicArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<Integer> partitionArgumentCaptor = ArgumentCaptor.forClass(Integer.class);
+        ArgumentCaptor<Long> offsetArgumentCaptor = ArgumentCaptor.forClass(Long.class);
+
         verify(userKafkaConsumer, timeout(10000).times(1))
-                .logKafkaMessages(userArgumentCaptor.capture(), topicArgumentCaptor.capture(),
-                        partitionArgumentCaptor.capture(), offsetArgumentCaptor.capture());
+            .logKafkaMessages(userArgumentCaptor.capture(), topicArgumentCaptor.capture(),
+                partitionArgumentCaptor.capture(), offsetArgumentCaptor.capture());
 
         User user = userArgumentCaptor.getValue();
         assertNotNull(user);

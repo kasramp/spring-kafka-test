@@ -1,7 +1,6 @@
 package com.madadipouya.springkafkatest.kafka.producer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.madadipouya.springkafkatest.dto.User;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
@@ -21,6 +20,7 @@ import org.springframework.kafka.test.context.EmbeddedKafka;
 import org.springframework.kafka.test.utils.ContainerTestUtils;
 import org.springframework.test.context.DynamicPropertyRegistry;
 import org.springframework.test.context.DynamicPropertySource;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.util.Map;
 import java.util.concurrent.BlockingQueue;
@@ -46,7 +46,7 @@ class UserKafkaProducerTest {
     private UserKafkaProducer producer;
 
     @Autowired
-    private ObjectMapper objectMapper;
+    private JsonMapper objectMapper;
 
     @DynamicPropertySource
     static void kafkaProperties(DynamicPropertyRegistry registry) {

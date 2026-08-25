@@ -37,7 +37,7 @@ services:
       start_period: 30s
 
   mysql:
-    image: mysql:8.3.0
+    image: mysql:9.7
     ports:
       - "3306:3306"
     environment:
