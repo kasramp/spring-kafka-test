@@ -1,6 +1,6 @@
 # Spring Kafka test example
 
-Spring Kafka example with JUnit 5 using EmbeddedKafka/`spring-kafka-test` and also using [Testcontainers](https://www.testcontainers.org/).
+Spring Kafka example with JUnit 6 using EmbeddedKafka/`spring-kafka-test` and also using [Testcontainers](https://www.testcontainers.org/).
 
 For the tutorials check the links below,
 
@@ -30,7 +30,7 @@ Open the browser `localhost:8080/apidocs`.
 
 You can interact with the `random` API to create a random user which then will be sent to Kafka and consumed by the consumer (see [`consumer/UserKafkaListener.java`](https://github.com/kasramp/spring-kafka-test/blob/master/src/main/java/com/madadipouya/springkafkatest/consumer/UserKafkaListener.java) file) and finally saves into the database.
 
-To see whether the message has been sent to Kafka, open your browser `http://localhost:8085/topic/com.madadipouya.kafka.use` (Kafdrop environment), 
+To see whether the message has been sent to Kafka, open your browser `http://localhost:8085/topic/com.madadipouya.kafka.user` (Kafdrop environment), 
 you should be able to see all messages that sent to `kafka.user` topic.
 
 To run Flyway migration scripts only run,
